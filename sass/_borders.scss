@@ -1,0 +1,8 @@
+$border_max:20;
+$border_step:1;
+$border_min:0;
+$borders: ();
+@while $border_max >= $border_min {
+	$borders : join($borders,$border_max);
+	$border_max: $border_max - $border_step;
+}

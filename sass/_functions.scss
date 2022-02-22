@@ -1,0 +1,9 @@
+@function rem($value) {
+	@if (unit($value) == "px" or "") {
+		@return $value / 16 + 0rem;
+	}
+
+	@else {
+		@return $value;
+	}
+}

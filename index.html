@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Seller Dashboard</title>
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+  <header class="pt-20 pb-20">
+    <div class="container">
+      <div class="header-inner">
+        <div class="logo">
+          <h3 class="bold upper">Logo</h3>
+        </div>
+        <ul class="menu ml-40">
+          <li>
+            <a href="#" class="upper mr-60">Events</a>
+          </li>
+          <li>
+            <a href="#" class="upper mr-60">Features</a>
+          </li>
+          <li>
+            <a href="#" class="upper mr-60">Community</a>
+          </li>
+          <li>
+            <a href="#" class="upper bold">Catalogue</a>
+          </li>
+        </ul>
+        <div class="avatar relative">
+          <img src="/images/profile-pic.png" alt="">
+          <ul class="avatar-menu text-center pl-20 pr-20 pt-20 pb-20">
+            <li class="mb-20">
+              <a href="#" class="upper">Profile</a>
+            </li>
+            <li class="mb-20">
+              <a href="#" class="upper">Seller Dashboard</a>
+            </li>
+            <li>
+              <a href="#" class="upper">Log Out</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="container cf">
+    <div class="image-gallery col-12 col-tablet-6 mt-60">
+      <ul class="tabs cf">
+        <li class="bold active col-6 pl-0 pr-0">Image Gallery</li>
+        <li class="bold col-6 pl-0 pr-0">Preview</li>
+      </ul>
+      <div class="image-gallery-con relative mt-60">
+        <input type="file" id="img" name="img" class="img-upload" accept="image/jpeg, image/jpg, image/png" onchange="loadFile(event)" multiple>
+        <div class="image relative" id="image">
+          <button class="delete-btn" id="delete-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="74.414" height="74.414" viewBox="0 0 74.414 74.414">
+              <g id="Group_1" data-name="Group 1" transform="translate(-3079.793 -714.793)">
+                <line id="Line_1" data-name="Line 1" y1="73" x2="73" transform="translate(3080.5 715.5)" fill="none"
+                  stroke="#898989" stroke-width="3" />
+                <line id="Line_2" data-name="Line 2" x2="73" y2="73" transform="translate(3080.5 715.5)" fill="none"
+                  stroke="#898989" stroke-width="3" />
+              </g>
+            </svg>
+          </button>
+          <img id="img-output" class="img-output" alt="">
+          <div class="image-add" id="image-add">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50.572" height="47.016" viewBox="0 0 50.572 47.016">
+              <path id="Path_127" data-name="Path 127"
+                d="M3518,2987.409h-34.769a7.911,7.911,0,0,0-7.9,7.9v27.656a7.911,7.911,0,0,0,7.9,7.9H3502a1.975,1.975,0,0,0,1.562-3.185l-5.168-6.678,14.322-18.217,9.236,11.018v3.331a1.975,1.975,0,1,0,3.951,0v-21.828A7.911,7.911,0,0,0,3518,2987.409Zm-3.82,10.979a1.977,1.977,0,0,0-3.066.048l-15.212,19.351-5.181-6.694a1.971,1.971,0,0,0-1.562-.768h0a1.977,1.977,0,0,0-1.563.771l-4.348,5.65a1.975,1.975,0,1,0,3.131,2.41l2.787-3.622,8.809,11.384h-14.741a3.955,3.955,0,0,1-3.95-3.951v-27.656a3.955,3.955,0,0,1,3.95-3.951H3518a3.956,3.956,0,0,1,3.951,3.951v12.348Zm-25.022-3.866a5.927,5.927,0,1,0,5.926,5.926A5.933,5.933,0,0,0,3489.161,2994.521Zm0,7.9a1.976,1.976,0,1,1,1.975-1.977A1.978,1.978,0,0,1,3489.161,3002.424Zm36.744,22.618a1.976,1.976,0,0,1-1.976,1.976H3518.5v5.433a1.975,1.975,0,0,1-3.951,0v-5.433h-5.432a1.975,1.975,0,1,1,0-3.951h5.432v-5.433a1.975,1.975,0,0,1,3.951,0v5.433h5.433A1.976,1.976,0,0,1,3525.905,3025.042Z"
+                transform="translate(-3475.333 -2987.409)" fill="#202020" />
+            </svg>
+            <p class="mt-20">Add Image</p>
+          </div>
+          <div class="info text-center mt-40" id="info">
+            <h3 class="product-title bold mb-20" id="product-title"></h3>
+            <p class="price">$88</p>
+          </div>
+        </div>
+        <ul class="thumbnails mt-30" id="thumbnails">
+          <li class="add-img" id="add-img">
+            <svg xmlns="http://www.w3.org/2000/svg" width="19.251" height="17.898" viewBox="0 0 19.251 17.898">
+              <g id="Group_2087" data-name="Group 2087" transform="translate(0 0)">
+                <path id="Path_127" data-name="Path 127"
+                  d="M3491.576,2987.409h-13.236a3.012,3.012,0,0,0-3.008,3.009v10.528a3.012,3.012,0,0,0,3.008,3.008h7.145a.752.752,0,0,0,.594-1.212l-1.967-2.542,5.452-6.935,3.516,4.195v1.268a.752.752,0,1,0,1.5,0v-8.309A3.012,3.012,0,0,0,3491.576,2987.409Zm-1.454,4.179a.752.752,0,0,0-1.167.018l-5.791,7.366-1.972-2.548a.75.75,0,0,0-.595-.292h0a.753.753,0,0,0-.595.293l-1.655,2.151a.752.752,0,1,0,1.192.917l1.061-1.379,3.353,4.334h-5.611a1.506,1.506,0,0,1-1.5-1.5v-10.528a1.506,1.506,0,0,1,1.5-1.5h13.236a1.506,1.506,0,0,1,1.5,1.5v4.7Zm-9.526-1.472a2.256,2.256,0,1,0,2.256,2.256A2.259,2.259,0,0,0,3480.6,2990.116Zm0,3.009a.752.752,0,1,1,.752-.752A.753.753,0,0,1,3480.6,2993.125Zm13.988,8.61a.752.752,0,0,1-.752.752h-2.068v2.068a.752.752,0,0,1-1.5,0v-2.068h-2.068a.752.752,0,1,1,0-1.5h2.068v-2.068a.752.752,0,0,1,1.5,0v2.068h2.068A.752.752,0,0,1,3494.584,3001.734Z"
+                  transform="translate(-3475.333 -2987.409)" fill="#000" />
+              </g>
+            </svg>
+            <p>Add Image</p>
+          </li>
+        </ul>
+        <div class="help-text-con text-center mt-100">
+          <p class="help-text">You may upload up to <span id="upload-count">5</span> images (including thumbnail)</p>
+          <p class="help-text">Supported file types: jpeg, jpg, png</p>
+        </div>
+      </div>
+    </div>
+    <div class="options col-12 col-tablet-6">
+      <div class="each-option">
+        <label for="name" class="bold">Product Name <span class="red">*</span></label>
+        <input type="text" id="name" placeholder="Name your listing. Keep it short and sweet" class="text-input mt-15">
+      </div>
+      <div class="each-option cf">
+        <div class="col-8 pl-0">
+          <label for="category" class="bold">Category <span class="red">*</span></label>
+          <ul class="option-list mt-20">
+            <li class="relative">
+              <input type="radio" name="category" value="Collectibles">
+              <p>Collectibles</p>
+            </li>
+            <li class="relative">
+              <input type="radio" name="category" value="Accessories">
+              <p>Accessories</p>
+            </li>
+            <li class="relative">
+              <input type="radio" name="category" value="T-Shirts">
+              <p>T-Shirts</p>
+            </li>
+          </ul>
+        </div>
+        <div class="col-4 relative">
+          <input type="file" id="thumbnail" name="thumbnail" class="thumbnail" accept="image/jpeg, image/jpg, image/png" onchange="addThumbnail(event)">
+          <label for="thumbnail-image" class="bold">Thumbnail Image <span class="red">*</span></label>
+          <img id="thumbnail-img-output" alt="">
+          <div class="add-image mt-15" id="thumbnail-add">
+            <svg xmlns="http://www.w3.org/2000/svg" width="19.251" height="17.898" viewBox="0 0 19.251 17.898">
+              <g id="Group_2087" data-name="Group 2087" transform="translate(0 0)">
+                <path id="Path_127" data-name="Path 127"
+                  d="M3491.576,2987.409h-13.236a3.012,3.012,0,0,0-3.008,3.009v10.528a3.012,3.012,0,0,0,3.008,3.008h7.145a.752.752,0,0,0,.594-1.212l-1.967-2.542,5.452-6.935,3.516,4.195v1.268a.752.752,0,1,0,1.5,0v-8.309A3.012,3.012,0,0,0,3491.576,2987.409Zm-1.454,4.179a.752.752,0,0,0-1.167.018l-5.791,7.366-1.972-2.548a.75.75,0,0,0-.595-.292h0a.753.753,0,0,0-.595.293l-1.655,2.151a.752.752,0,1,0,1.192.917l1.061-1.379,3.353,4.334h-5.611a1.506,1.506,0,0,1-1.5-1.5v-10.528a1.506,1.506,0,0,1,1.5-1.5h13.236a1.506,1.506,0,0,1,1.5,1.5v4.7Zm-9.526-1.472a2.256,2.256,0,1,0,2.256,2.256A2.259,2.259,0,0,0,3480.6,2990.116Zm0,3.009a.752.752,0,1,1,.752-.752A.753.753,0,0,1,3480.6,2993.125Zm13.988,8.61a.752.752,0,0,1-.752.752h-2.068v2.068a.752.752,0,0,1-1.5,0v-2.068h-2.068a.752.752,0,1,1,0-1.5h2.068v-2.068a.752.752,0,0,1,1.5,0v2.068h2.068A.752.752,0,0,1,3494.584,3001.734Z"
+                  transform="translate(-3475.333 -2987.409)" fill="#fff" />
+              </g>
+            </svg>
+            <p>Add Image</p>
+          </div>
+        </div>
+      </div>
+      <div class="each-option">
+        <label for="brand" class="bold">Brand (up to 2) <span class="red">*</span></label>
+        <input type="text" id="brand" placeholder="Add a keyword and press Enter" class="text-input mt-15">
+        <div class="help-text">
+          <span>E.g.</span>
+          <ul class="brand-example ml-20">
+            <li>
+              <p class="pr-20">Popmart</p>
+              <svg xmlns="http://www.w3.org/2000/svg" width="74.414" height="74.414" viewBox="0 0 74.414 74.414">
+                <g id="Group_1" data-name="Group 1" transform="translate(-3079.793 -714.793)">
+                  <line id="Line_1" data-name="Line 1" y1="73" x2="73" transform="translate(3080.5 715.5)" fill="none"
+                    stroke="#898989" stroke-width="3" />
+                  <line id="Line_2" data-name="Line 2" x2="73" y2="73" transform="translate(3080.5 715.5)" fill="none"
+                    stroke="#898989" stroke-width="3" />
+                </g>
+              </svg>
+            </li>
+            <li>
+              <p class="pr-20">Kaws</p>
+              <svg xmlns="http://www.w3.org/2000/svg" width="74.414" height="74.414" viewBox="0 0 74.414 74.414">
+                <g id="Group_1" data-name="Group 1" transform="translate(-3079.793 -714.793)">
+                  <line id="Line_1" data-name="Line 1" y1="73" x2="73" transform="translate(3080.5 715.5)" fill="none"
+                    stroke="#898989" stroke-width="3" />
+                  <line id="Line_2" data-name="Line 2" x2="73" y2="73" transform="translate(3080.5 715.5)" fill="none"
+                    stroke="#898989" stroke-width="3" />
+                </g>
+              </svg>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="each-option">
+        <label for="description" class="bold">Description <span class="red">*</span></label>
+        <input type="text" id="description" placeholder="Add more information about the product" class="text-input mt-15" maxlength="200">
+        <div class="word-counter text-right mt-10" id="word-counter">200/200</div>
+      </div>
+      <div class="each-option">
+        <label for="condition" class="bold">Condition</label>
+        <ul class="option-list mt-20">
+          <li class="relative">
+            <input type="radio" name="condition" value="Bad">
+            <p>Bad</p>
+          </li>
+          <li class="relative">
+            <input type="radio" name="condition" value="Fair">
+            <p>Fair</p>
+          </li>
+          <li class="relative">
+            <input type="radio" name="condition" value="Good">
+            <p>Good</p>
+          </li>
+          <li class="relative">
+            <input type="radio" name="condition" value="New">
+            <p>New</p>
+          </li>
+        </ul>
+      </div>
+      <div class="each-option cf">
+        <div class="col-6 pl-0 mb-20">
+          <p class="title bold">Season</p>
+          <input type="text" id="season" placeholder="SS20" class="text-input mt-15">
+        </div>
+        <div class="col-6 pr-0 mb-20">
+          <p class="title bold">Release Date</p>
+          <input type="text" id="release-date" placeholsder="DD/MM/YY" class="text-input mt-15">
+        </div>
+        <div class="col-6 pl-0 mb-20">
+          <p class="title bold">Dimensions</p>
+          <input type="text" id="dimensions" placeholder="IN" class="text-input mt-15">
+        </div>
+        <div class="col-6 pr-0 mb-20">
+          <p class="title bold">Retail</p>
+          <input type="text" id="retail" placeholder="E.g. $400" class="text-input mt-15">
+        </div>
+      </div>
+      <div class="each-option">
+        <p class="title bold">Authenticity</p>
+        <p class="mt-15">100%</p>
+      </div>
+      <div class="each-option ">
+        <p class="title bold">Declaration <span class="red">*</span></p>
+        <div class="option-inner relative mt-15">
+          <div class="checkbox mr-10"></div>
+          <input type="checkbox" id="declaration" class="input-checkbox">
+          <label>I hereby declare that the information given in this application is true and correct to the best of my knowledge and belief. In case any information given in this application proves to be false or incorrect, I shall be responsible for the consequences.</label>
+        </div>
+      </div>
+      <div class="each-option">
+        <p><span class="red">*</span> indicates required</p>
+      </div>
+      <div class="each-option cta">
+        <ul>
+          <li>
+            <button>Cancel</button>
+          </li>
+          <li>
+            <button class="publish" disabled="disabled">Publish</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </main>
+</body>
+<script>
+  const descriptionInput = document.getElementById('description');
+  descriptionInput.addEventListener('keyup', () => {
+    const wordCounter = document.getElementById('word-counter');
+    const inputLength = descriptionInput.value.length;
+    const maxLength = descriptionInput.getAttribute('maxlength');
+    wordCounter.innerHTML = `${maxLength - inputLength}/${maxLength}`;
+  });
+
+  const galleryImage = document.getElementById('image');
+  const thumbnailImage = document.getElementById('add-img');
+  const imgUpload = [galleryImage, thumbnailImage];
+  imgUpload.forEach(el => {
+    el.addEventListener('click', () => {
+      const fileUpload = document.getElementById('img');
+      fileUpload.click();
+    })
+  });
+
+  let uploadCount = 0;
+  const uploadMax = 5;
+  const loadFile = event => {
+    const thumbnailsGroup = document.getElementById('thumbnails');
+    for (const img in event.target.files) {
+      if (Number.isInteger(parseInt(img))) {
+        const thumbnailAdd = document.getElementById('add-img');
+        if (uploadCount < 5) {
+          const thumbnail = document.createElement('li');
+          const thumbnailImg = document.createElement('img');
+          thumbnailImg.src = URL.createObjectURL(event.target.files[img]);
+          thumbnail.appendChild(thumbnailImg);
+          thumbnailsGroup.appendChild(thumbnail);
+          thumbnailsGroup.insertBefore(thumbnail, thumbnailAdd);
+          uploadCount++;
+        }
+
+        if (uploadCount === 4) {
+          thumbnailAdd.style.display = 'none';
+        }
+      }
+    }
+
+    document.getElementById('delete-btn').style.display = 'block';
+    document.getElementById('img-output').src = URL.createObjectURL(event.target.files[0]);
+    document.getElementById('image-add').style.display = 'none';
+    document.getElementById('upload-count').innerHTML = `${uploadMax - uploadCount}`
+    thumbnailsGroup.style.display = 'flex';
+    document.getElementById('image').classList.add('image-added');
+  }
+
+  document.getElementById('delete-btn').addEventListener('click', el => {
+    el.stopPropagation();
+    document.getElementById('thumbnails').firstChild.remove();
+    uploadCount--;
+    if (uploadCount < 4) {
+      document.getElementById('add-img').style.display = 'block';
+    }
+
+    document.getElementById('upload-count').innerHTML = `${uploadMax - uploadCount}`;
+  });
+
+  const productTitle = document.getElementById('name');
+  productTitle.addEventListener('keyup', () => {
+    const value = productTitle.value;
+    document.getElementById('product-title').innerHTML = value;
+  });
+
+  const tabs = document.querySelectorAll('.tabs li');
+  tabs.forEach(el => {
+    el.addEventListener('click', e => {
+      document.querySelector('.tabs li.active').classList.remove('active');
+      e.target.classList.add('active');
+    });
+  });
+
+  document.getElementById('thumbnail-add').addEventListener('click', () => {
+    document.getElementById('thumbnail-upload').click();
+  });
+
+  const addThumbnail = event => {
+
+  }
+</script>
+</html>

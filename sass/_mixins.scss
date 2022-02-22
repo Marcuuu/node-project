@@ -1,0 +1,33 @@
+@mixin on($query) {
+  @if $query == smallest {
+    $smallest-size: nth(map-values($screen-sizes), 1);
+
+    @each $value in map-values($screen-sizes) {
+      @if $value < $smallest-size {
+        $smallest-size: $value;
+      }
+    }
+
+    @media (max-width: $smallest-size) {
+			@content;
+		}
+  }
+
+  @else if map-has-key($screen-sizes, $query) {
+		@media (min-width: map-get($screen-sizes, $query)) {
+			@content;
+		}
+	}
+
+  @else if $query == hi-res {
+		@media (-webkit-min-device-pixel-ratio: $retina-dpi/96), (min-resolution: $retina-dpi + "dpi") {
+			@content;
+		}
+	}
+
+  @else {
+		@media #{$query} {
+			@content;
+		}
+	}
+}
