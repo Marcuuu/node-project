@@ -28,9 +28,9 @@
             <a href="#" class="upper bold">Catalogue</a>
           </li>
         </ul>
-        <div class="avatar relative">
+        <div class="avatar relative" id="avatar">
           <img src="/images/profile-pic.png" alt="">
-          <ul class="avatar-menu text-center pl-20 pr-20 pt-20 pb-20">
+          <ul class="avatar-menu text-center pl-20 pr-20 pt-20 pb-20" id="avatar-menu" style="display:none;">
             <li class="mb-20">
               <a href="#" class="upper">Profile</a>
             </li>
@@ -48,10 +48,10 @@
   <main class="container cf">
     <div class="image-gallery col-12 col-tablet-6 mt-60">
       <ul class="tabs cf">
-        <li class="bold active col-6 pl-0 pr-0">Image Gallery</li>
-        <li class="bold col-6 pl-0 pr-0">Preview</li>
+        <li class="bold active col-6 pl-0 pr-0" data-view="gallery">Image Gallery</li>
+        <li class="bold col-6 pl-0 pr-0" data-view="preview">Preview</li>
       </ul>
-      <div class="image-gallery-con relative mt-60">
+      <div class="image-gallery-con relative mt-60" id="image-gallery-con">
         <input type="file" id="img" name="img" class="img-upload" accept="image/jpeg, image/jpg, image/png" onchange="loadFile(event)" multiple>
         <div class="image relative" id="image">
           <button class="delete-btn" id="delete-btn">
@@ -90,13 +90,36 @@
             <p>Add Image</p>
           </li>
         </ul>
-        <div class="help-text-con text-center mt-100">
-          <p class="help-text">You may upload up to <span id="upload-count">5</span> images (including thumbnail)</p>
-          <p class="help-text">Supported file types: jpeg, jpg, png</p>
+      </div>
+      <div class="preview-con mt-60" id="preview-con">
+        <div class="image relative" id="preview-image">
+          <button class="delete-btn" id="delete-btn2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="74.414" height="74.414" viewBox="0 0 74.414 74.414">
+              <g id="Group_1" data-name="Group 1" transform="translate(-3079.793 -714.793)">
+                <line id="Line_1" data-name="Line 1" y1="73" x2="73" transform="translate(3080.5 715.5)" fill="none"
+                  stroke="#898989" stroke-width="3" />
+                <line id="Line_2" data-name="Line 2" x2="73" y2="73" transform="translate(3080.5 715.5)" fill="none"
+                  stroke="#898989" stroke-width="3" />
+              </g>
+            </svg>
+          </button>
+          <img id="preview-img" alt="">
+          <div class="preview-info text-center mt-40" id="preview-info">
+            <h3 class="product-title bold mb-20" id="product-title2"></h3>
+            <p class="price">$88</p>
+          </div>
+          <div class="text text-center">
+            <h3 class="title bold">Nothing to preview!</h3>
+            <h3 class="title bold">Start adding product details on the right.</h3>
+          </div>
         </div>
       </div>
+      <div class="help-text-con text-center mt-100">
+        <p class="help-text">You may upload up to <span id="upload-count">5</span> images (including thumbnail)</p>
+        <p class="help-text">Supported file types: jpeg, jpg, png</p>
+      </div>
     </div>
-    <div class="options col-12 col-tablet-6">
+    <div class="options col-12 col-tablet-6 mt-60">
       <div class="each-option">
         <label for="name" class="bold">Product Name <span class="red">*</span></label>
         <input type="text" id="name" placeholder="Name your listing. Keep it short and sweet" class="text-input mt-15">
@@ -122,8 +145,20 @@
         <div class="col-4 relative">
           <input type="file" id="thumbnail" name="thumbnail" class="thumbnail" accept="image/jpeg, image/jpg, image/png" onchange="addThumbnail(event)">
           <label for="thumbnail-image" class="bold">Thumbnail Image <span class="red">*</span></label>
-          <img id="thumbnail-img-output" alt="">
-          <div class="add-image mt-15" id="thumbnail-add">
+          <div class="thumbnail-img mt-30 pt-30" id="thumbnail-img">
+            <button class="thumbnail-delete" id="thumbnail-delete">
+              <svg xmlns="http://www.w3.org/2000/svg" width="74.414" height="74.414" viewBox="0 0 74.414 74.414">
+                <g id="Group_1" data-name="Group 1" transform="translate(-3079.793 -714.793)">
+                  <line id="Line_1" data-name="Line 1" y1="73" x2="73" transform="translate(3080.5 715.5)" fill="none"
+                    stroke="#898989" stroke-width="3" />
+                  <line id="Line_2" data-name="Line 2" x2="73" y2="73" transform="translate(3080.5 715.5)" fill="none"
+                    stroke="#898989" stroke-width="3" />
+                </g>
+              </svg>
+            </button>
+            <img id="thumbnail-img-output" alt="">
+          </div>
+          <button class="add-thumbnail mt-15" id="thumbnail-add">
             <svg xmlns="http://www.w3.org/2000/svg" width="19.251" height="17.898" viewBox="0 0 19.251 17.898">
               <g id="Group_2087" data-name="Group 2087" transform="translate(0 0)">
                 <path id="Path_127" data-name="Path 127"
@@ -132,7 +167,7 @@
               </g>
             </svg>
             <p>Add Image</p>
-          </div>
+          </button>
         </div>
       </div>
       <div class="each-option">
@@ -239,6 +274,15 @@
   </main>
 </body>
 <script>
+  document.getElementById('avatar').addEventListener('click', () => {
+    if (document.getElementById('avatar-menu').style.display === 'none') {
+      document.getElementById('avatar-menu').style.display = 'block';
+    }
+    else {
+      document.getElementById('avatar-menu').style.display = 'none';
+    }
+  });
+
   const descriptionInput = document.getElementById('description');
   descriptionInput.addEventListener('keyup', () => {
     const wordCounter = document.getElementById('word-counter');
@@ -280,45 +324,89 @@
       }
     }
 
-    document.getElementById('delete-btn').style.display = 'block';
-    document.getElementById('img-output').src = URL.createObjectURL(event.target.files[0]);
-    document.getElementById('image-add').style.display = 'none';
     document.getElementById('upload-count').innerHTML = `${uploadMax - uploadCount}`
     thumbnailsGroup.style.display = 'flex';
-    document.getElementById('image').classList.add('image-added');
   }
-
-  document.getElementById('delete-btn').addEventListener('click', el => {
-    el.stopPropagation();
-    document.getElementById('thumbnails').firstChild.remove();
-    uploadCount--;
-    if (uploadCount < 4) {
-      document.getElementById('add-img').style.display = 'block';
-    }
-
-    document.getElementById('upload-count').innerHTML = `${uploadMax - uploadCount}`;
-  });
 
   const productTitle = document.getElementById('name');
   productTitle.addEventListener('keyup', () => {
     const value = productTitle.value;
     document.getElementById('product-title').innerHTML = value;
+    document.getElementById('product-title2').innerHTML = value;
   });
 
   const tabs = document.querySelectorAll('.tabs li');
   tabs.forEach(el => {
     el.addEventListener('click', e => {
+      e.stopPropagation();
       document.querySelector('.tabs li.active').classList.remove('active');
       e.target.classList.add('active');
+
+      if (e.target.dataset.view === 'gallery') {
+        document.getElementById('image-gallery-con').style.display = 'block';
+        document.getElementById('preview-con').style.display = 'none';
+      }
+      else {
+        document.getElementById('image-gallery-con').style.display = 'none';
+        document.getElementById('preview-con').style.display = 'block';
+      }
     });
   });
 
   document.getElementById('thumbnail-add').addEventListener('click', () => {
-    document.getElementById('thumbnail-upload').click();
+    document.getElementById('thumbnail').click();
   });
 
   const addThumbnail = event => {
+    document.getElementById('thumbnail-img-output').src = URL.createObjectURL(event.target.files[0]);
+    document.getElementById('img-output').src = URL.createObjectURL(event.target.files[0]);
+    document.getElementById('image').classList.add('image-added');
+    document.getElementById('image-add').style.display = 'none';
+    document.getElementById('delete-btn').style.display = 'block';
+    document.getElementById('thumbnails').style.display = 'flex';
+    document.getElementById('info').style.display = 'block';
+    document.getElementById('thumbnail-delete').style.display = 'block';
+    document.getElementById('thumbnail-img').style.display = 'block';
 
+    document.getElementById('preview-img').src = URL.createObjectURL(event.target.files[0]);
+    document.querySelector('#preview-con .text').style.display = 'none';
+    document.getElementById('preview-info').style.display = 'block';
+    document.getElementById('preview-image').classList.add('image-added');
+    document.getElementById('delete-btn2').style.display = 'block';
+    uploadCount++;
+
+    document.getElementById('upload-count').innerHTML = `${uploadMax - uploadCount}`;
   }
+
+  const deleteBtn = document.getElementById('delete-btn');
+  const thumbnailDeleteBtn = document.getElementById('thumbnail-delete');
+  const previewDeleteBtn = document.getElementById('delete-btn2');
+  const deleteBtns = [deleteBtn, thumbnailDeleteBtn, previewDeleteBtn];
+
+  deleteBtns.forEach(el => {
+    el.addEventListener('click', () => {
+      document.getElementById('thumbnail-img-output').src = '';
+      document.getElementById('thumbnail-delete').style.display = 'none';
+      document.getElementById('thumbnail-img').style.display = 'none';
+      document.getElementById('img-output').src = '';
+      document.getElementById('delete-btn').style.display = 'none';
+      document.getElementById('info').style.display = 'none';
+      document.getElementById('image').classList.remove('image-added');
+      document.getElementById('image-add').style.display = 'flex';
+      document.getElementById('preview-img').src = '';
+      document.getElementById('delete-btn2').style.display = 'none';
+      document.getElementById('preview-image').classList.remove('image-added');
+      document.getElementById('preview-info').style.display = 'none';
+      document.querySelector('#preview-image .text').style.display = 'block';
+
+      document.getElementById('img-output').src = '';
+      document.getElementById('delete-btn').style.display = 'none';
+      document.getElementById('image').classList.remove('image-added');
+      document.getElementById('info').style.display = 'none';
+      uploadCount--;
+
+    document.getElementById('upload-count').innerHTML = `${uploadMax - uploadCount}`;
+    })
+  });
 </script>
 </html>

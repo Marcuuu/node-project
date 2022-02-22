@@ -27253,7 +27253,7 @@ header .menu li a { color: white; }
 
 header .avatar { cursor: pointer; width: 3.125rem; }
 
-header .avatar .avatar-menu { width: 9.375rem; position: absolute; top: calc(100% + 20px); right: 0; background-color: #202020; }
+header .avatar .avatar-menu { width: 9.375rem; position: absolute; top: calc(100% + 20px); right: 0; background-color: #202020; z-index: 1; }
 
 header .avatar .avatar-menu li a { color: white; }
 
@@ -27295,7 +27295,25 @@ header .avatar .avatar-menu li a { color: white; }
 
 .image-gallery .image-gallery-con .thumbnails .add-img.disabled { cursor: not-allowed; display: none; }
 
-.image-gallery .thumbnail { opacity: 0; -webkit-appearance: none; -moz-appearance: none; appearance: none; position: absolute; pointer-events: none; }
+.preview-con { display: none; }
+
+.preview-con .image { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; min-height: 31.25rem; border: 0.0625rem solid #898989; padding-top: 2.5rem; padding-bottom: 2.5rem; }
+
+.preview-con .image.image-added { border: none; }
+
+.preview-con .image .title { font-size: 1.25rem; }
+
+.preview-con .image .title:not(:last-child) { margin-bottom: 0.3125rem; }
+
+.preview-con .preview-info { display: none; }
+
+.preview-con .preview-info .product-title { max-width: 28.125rem; font-size: 1.5rem; margin-bottom: 1.25rem; }
+
+.preview-con .preview-info .price { font-size: 1.5rem; }
+
+.preview-con .delete-btn { display: none; position: absolute; top: 1.25rem; right: 1.25rem; width: 1.875rem; height: 1.875rem; border: 0.0625rem solid #898989; border-radius: 50%; }
+
+.preview-con .delete-btn svg { display: block; height: 100%; padding: 0.4375rem; }
 
 .options { padding-left: 6.25rem; border-left: 0.0625rem solid #C9C9C9; }
 
@@ -27329,9 +27347,9 @@ header .avatar .avatar-menu li a { color: white; }
 
 .options .each-option .option-list p { border: 0.0625rem solid #202020; padding: 0.625rem; color: #202020; -webkit-transition: 0.15s ease-in-out; transition: 0.15s ease-in-out; }
 
-.options .add-image { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; background-color: #202020; color: white; white-space: nowrap; padding: 0.625rem; }
+.options .add-thumbnail { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; background-color: #202020; color: white; white-space: nowrap; padding: 0.625rem; }
 
-.options .add-image svg { margin-right: 0.625rem; fill: white; }
+.options .add-thumbnail svg { margin-right: 0.625rem; fill: white; }
 
 .options .help-text { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; color: #898989; margin-top: 1.25rem; }
 
@@ -27352,6 +27370,14 @@ header .avatar .avatar-menu li a { color: white; }
 .options .input-checkbox:checked ~ .checkbox { background-color: #202020; border: 0.0625rem solid #202020; }
 
 .options .checkbox { min-width: 1.25rem; border: 0.0625rem solid #898989; width: 1.25rem; height: 1.25rem; display: inline-block; margin-right: 1.25rem; }
+
+.options .thumbnail { opacity: 0; -webkit-appearance: none; -moz-appearance: none; appearance: none; position: absolute; pointer-events: none; }
+
+.options .thumbnail-img { display: none; }
+
+.options .thumbnail-delete { display: none; position: absolute; top: 1.875rem; right: 0.625rem; width: 1.875rem; height: 1.875rem; border: 0.0625rem solid #898989; border-radius: 50%; cursor: pointer; }
+
+.options .thumbnail-delete svg { display: block; height: 100%; padding: 0.4375rem; }
 
 .width-100 { width: 100%; }
 
